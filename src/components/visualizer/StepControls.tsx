@@ -29,61 +29,61 @@ export const StepControls: React.FC<StepControlsProps> = ({
   onSpeedChange
 }) => {
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-center gap-3">
+    <div className="space-y-3 sm:space-y-4">
+      <div className="flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
         <Button
           variant="outline"
           size="sm"
           onClick={onReset}
-          className="flex items-center gap-2 hover:bg-gray-100 transition-colors"
+          className="flex items-center gap-1 sm:gap-2 hover:bg-gray-100 transition-colors h-10 px-3 text-xs sm:text-sm"
         >
-          <RotateCcw className="w-4 h-4" />
-          Reset
+          <RotateCcw className="w-3 h-3 sm:w-4 sm:h-4" />
+          <span className="hidden sm:inline">Reset</span>
         </Button>
         <Button
           variant="outline"
           size="sm"
           onClick={onPrev}
           disabled={currentStep === 0}
-          className="flex items-center gap-2 hover:bg-blue-50 transition-colors"
+          className="flex items-center gap-1 sm:gap-2 hover:bg-blue-50 transition-colors h-10 px-3 text-xs sm:text-sm"
         >
-          <SkipBack className="w-4 h-4" />
-          Previous
+          <SkipBack className="w-3 h-3 sm:w-4 sm:h-4" />
+          <span className="hidden sm:inline">Previous</span>
         </Button>
         <Button
           variant="outline"
           size="sm"
           onClick={isPlaying ? onPause : onPlay}
           disabled={currentStep >= totalSteps - 1}
-          className="flex items-center gap-2 px-6 hover:bg-green-50 transition-colors"
+          className="flex items-center gap-1 sm:gap-2 px-4 sm:px-6 hover:bg-green-50 transition-colors h-10 text-xs sm:text-sm"
         >
-          {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
-          {isPlaying ? 'Pause' : 'Play'}
+          {isPlaying ? <Pause className="w-3 h-3 sm:w-4 sm:h-4" /> : <Play className="w-3 h-3 sm:w-4 sm:h-4" />}
+          <span>{isPlaying ? 'Pause' : 'Play'}</span>
         </Button>
         <Button
           variant="outline"
           size="sm"
           onClick={onNext}
           disabled={currentStep >= totalSteps - 1}
-          className="flex items-center gap-2 hover:bg-blue-50 transition-colors"
+          className="flex items-center gap-1 sm:gap-2 hover:bg-blue-50 transition-colors h-10 px-3 text-xs sm:text-sm"
         >
-          Next
-          <SkipForward className="w-4 h-4" />
+          <span className="hidden sm:inline">Next</span>
+          <SkipForward className="w-3 h-3 sm:w-4 sm:h-4" />
         </Button>
       </div>
       
-      <div className="flex items-center justify-center gap-4">
-        <span className="text-sm text-gray-600">Animation Speed:</span>
-        <div className="flex gap-2">
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
+        <span className="text-xs sm:text-sm text-gray-600">Speed:</span>
+        <div className="flex gap-1 sm:gap-2 flex-wrap justify-center">
           {[2000, 1200, 800, 400].map((speed, index) => (
             <Button
               key={speed}
               variant={animationSpeed === speed ? "default" : "outline"}
               size="sm"
               onClick={() => onSpeedChange(speed)}
-              className="text-xs"
+              className="text-xs h-8 px-2 sm:px-3"
             >
-              {index === 0 ? 'Slow' : index === 1 ? 'Normal' : index === 2 ? 'Fast' : 'Very Fast'}
+              {index === 0 ? 'Slow' : index === 1 ? 'Normal' : index === 2 ? 'Fast' : 'V.Fast'}
             </Button>
           ))}
         </div>

@@ -67,13 +67,13 @@ export const AlgorithmVisualizer: React.FC<AlgorithmVisualizerProps> = ({
 
   return (
     <Card className="backdrop-blur-sm bg-white/95 border-0 shadow-2xl">
-      <CardHeader className="bg-gradient-to-r from-blue-50 to-purple-50">
-        <CardTitle className="text-2xl font-bold text-gray-800 flex items-center gap-3">
-          <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
+      <CardHeader className="bg-gradient-to-r from-blue-50 to-purple-50 p-4 sm:p-6">
+        <CardTitle className="text-lg sm:text-2xl font-bold text-gray-800 flex items-center gap-2 sm:gap-3">
+          <div className="w-2 h-2 sm:w-3 sm:h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
           Algorithm Visualization
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-8 p-6">
+      <CardContent className="space-y-6 sm:space-y-8 p-4 sm:p-6">
         <StringVisualization
           stringN={stringN}
           stringK={stringK}

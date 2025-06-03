@@ -35,7 +35,7 @@ export const StringVisualization: React.FC<StringVisualizationProps> = ({
       <Badge 
         key={char} 
         variant="outline" 
-        className="font-mono text-lg px-3 py-1 bg-gradient-to-r from-purple-100 to-indigo-100 border-purple-300 text-purple-800 animate-fade-in-up"
+        className="font-mono text-sm sm:text-lg px-2 py-1 sm:px-3 bg-gradient-to-r from-purple-100 to-indigo-100 border-purple-300 text-purple-800 animate-fade-in-up"
       >
         {char}
       </Badge>
@@ -44,7 +44,7 @@ export const StringVisualization: React.FC<StringVisualizationProps> = ({
 
   const renderString = () => {
     return stringN.split('').map((char, index) => {
-      let className = 'relative px-3 py-2 m-1 border-2 rounded-lg font-mono text-lg font-bold transition-all duration-500 ease-in-out transform hover:scale-105';
+      let className = 'relative px-2 py-1.5 sm:px-3 sm:py-2 m-0.5 sm:m-1 border-2 rounded-lg font-mono text-sm sm:text-lg font-bold transition-all duration-500 ease-in-out transform hover:scale-105';
       let overlayClassName = '';
       
       if (currentStepData) {
@@ -67,10 +67,10 @@ export const StringVisualization: React.FC<StringVisualizationProps> = ({
         
         // Add pointer indicators
         if (isLeftPointer) {
-          overlayClassName = 'absolute -top-8 left-1/2 transform -translate-x-1/2 bg-purple-600 text-white px-2 py-1 rounded text-xs font-bold animate-bounce';
+          overlayClassName = 'absolute -top-6 sm:-top-8 left-1/2 transform -translate-x-1/2 bg-purple-600 text-white px-1.5 py-0.5 sm:px-2 sm:py-1 rounded text-xs font-bold animate-bounce';
         }
         if (isRightPointer) {
-          overlayClassName = 'absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-indigo-600 text-white px-2 py-1 rounded text-xs font-bold animate-bounce';
+          overlayClassName = 'absolute -bottom-6 sm:-bottom-8 left-1/2 transform -translate-x-1/2 bg-indigo-600 text-white px-1.5 py-0.5 sm:px-2 sm:py-1 rounded text-xs font-bold animate-bounce';
         }
         
         // Highlight final result with special animation
@@ -97,29 +97,31 @@ export const StringVisualization: React.FC<StringVisualizationProps> = ({
   };
 
   return (
-    <div className="space-y-4">
-      <div className="space-y-4">
-        <div className="text-sm font-medium text-gray-700 flex items-center gap-2">
-          <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
+    <div className="space-y-3 sm:space-y-4">
+      <div className="space-y-3 sm:space-y-4">
+        <div className="text-xs sm:text-sm font-medium text-gray-700 flex items-center gap-2">
+          <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-purple-500 rounded-full"></span>
           Required characters:
         </div>
-        <div className="flex gap-3 flex-wrap">
+        <div className="flex gap-2 sm:gap-3 flex-wrap">
           {getRequiredChars()}
         </div>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-3 sm:space-y-4">
         <div className="flex items-center justify-between">
-          <div className="text-sm font-medium text-gray-700 flex items-center gap-2">
-            <span className="w-2 h-2 bg-indigo-500 rounded-full"></span>
+          <div className="text-xs sm:text-sm font-medium text-gray-700 flex items-center gap-2">
+            <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-indigo-500 rounded-full"></span>
             String visualization:
           </div>
           <div className="text-xs text-gray-500">
             Step {currentStep + 1} of {result.steps.length}
           </div>
         </div>
-        <div className="flex flex-wrap items-center justify-center p-6 bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl border-2 border-dashed border-gray-200 min-h-[120px]">
-          {renderString()}
+        <div className="flex flex-wrap items-center justify-center p-4 sm:p-6 bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl border-2 border-dashed border-gray-200 min-h-[100px] sm:min-h-[120px] overflow-x-auto">
+          <div className="flex flex-wrap justify-center items-center">
+            {renderString()}
+          </div>
         </div>
       </div>
     </div>
